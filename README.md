@@ -2,6 +2,8 @@
 
 Este repositório contém uma implementação didática do algoritmo Ricart‑Agrawala para exclusão mútua sem coordenador central, usando trocas de mensagens HTTP entre processos. É destinado a demonstração e aprendizado, não produção.
 
+[Teoria e explicação](https://docs.google.com/document/d/1aYuY9yKUYu7AuOilrdxTzrVwknRVSDElsaJVPGlA11U/edit?usp=sharing)
+
 ## 1. Visão geral (resumo rápido)
 
 Ricart‑Agrawala é um protocolo distribuído em que cada processo pede permissão a todos os outros antes de entrar na seção crítica. Peers respondem com um REPLY imediatamente ou diferem a resposta se tiverem prioridade para entrar primeiro. Quando um processo recebe REPLYs de todos os demais, ele entra na seção crítica.
