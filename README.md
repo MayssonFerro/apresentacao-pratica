@@ -2,7 +2,7 @@
 
 Este repositório contém uma implementação didática do algoritmo Ricart‑Agrawala para exclusão mútua sem coordenador central, usando trocas de mensagens HTTP entre processos. É destinado a demonstração e aprendizado, não produção.
 
-[Explicação aprofundada](https://docs.google.com/document/d/1aYuY9yKUYu7AuOilrdxTzrVwknRVSDElsaJVPGlA11U/edit?usp=sharing)
+[Explicação aprofundada no Google Docs](https://docs.google.com/document/d/1aYuY9yKUYu7AuOilrdxTzrVwknRVSDElsaJVPGlA11U/edit?usp=sharing)
 
 ## 1. Visão geral (resumo rápido)
 
