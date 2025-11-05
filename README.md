@@ -1,8 +1,8 @@
-# Experimento: Exclusão Mútua Distribuída (didático)
+# Exclusão Mútua Distribuída
 
 Este repositório contém uma implementação didática do algoritmo Ricart‑Agrawala para exclusão mútua sem coordenador central, usando trocas de mensagens HTTP entre processos. É destinado a demonstração e aprendizado, não produção.
 
-[Teoria e explicação](https://docs.google.com/document/d/1aYuY9yKUYu7AuOilrdxTzrVwknRVSDElsaJVPGlA11U/edit?usp=sharing)
+[Explicação aprofundada](https://docs.google.com/document/d/1aYuY9yKUYu7AuOilrdxTzrVwknRVSDElsaJVPGlA11U/edit?usp=sharing)
 
 ## 1. Visão geral (resumo rápido)
 
