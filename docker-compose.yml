@@ -1,0 +1,27 @@
+services:
+  p1:
+    build: .
+    container_name: p1
+    environment:
+      - PROCESS_ID=p1
+      - PEERS=p2,p3
+    ports:
+      - "5001:5000"
+
+  p2:
+    build: .
+    container_name: p2
+    environment:
+      - PROCESS_ID=p2
+      - PEERS=p1,p3
+    ports:
+      - "5002:5000"
+
+  p3:
+    build: .
+    container_name: p3
+    environment:
+      - PROCESS_ID=p3
+      - PEERS=p1,p2
+    ports:
+      - "5003:5000"
