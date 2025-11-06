@@ -8,11 +8,25 @@ Este repositório contém uma implementação didática do algoritmo Ricart‑Ag
 
 Ricart‑Agrawala é um protocolo distribuído em que cada processo pede permissão a todos os outros antes de entrar na seção crítica. Peers respondem com um REPLY imediatamente ou diferem a resposta se tiverem prioridade para entrar primeiro. Quando um processo recebe REPLYs de todos os demais, ele entra na seção crítica.
 
+### Onde ele é aplicado (casos típicos)
+
+- Sistemas distribuídos pequenos ou acadêmicos — ensino e experimentos para ilustrar exclusão mútua sem coordenador.
+- Serviços homogêneos que precisam coordenar acesso a um recurso exclusivo entre N processos conhecidos (ex.: três contêineres que controlam um hardware ou uma seção crítica em demo).
+- Ambientes embarcados/distribuídos com conjunto de participantes estável (sensor networks pequenas, simulações distribuídas).
+- Cenários de recurso compartilhado de baixa escala: impressoras, dispositivos físicos, atualizações locais de configuração onde todos os nós se conhecem.
+
 ### Por que usar
 
 - Remove necessidade de um coordenador central (menor ponto único de falha).
 - Simples conceitualmente e fácil de demonstrar com mensagens REQUEST/REPLY.
 - Garante exclusão mútua e evita deadlock sob as suposições clássicas.
+
+### Quando NÃO usar (limitações práticas)
+
+- Sistemas grandes ou dinamicamente mutáveis (membros entram/saem frequentemente).
+- Ambientes com falhas frequentes ou WAN instável — algoritmo bloqueia se peers morrerem (a menos que você acrescente mecanismos de timeout/checagem).
+- Quando a escala/latência importa: O(N) mensagens por pedido torna‑o caro para muitos nós.
+- Para coordenação de estado crítico em produção (prefira protocolos de consenso/serviços de coordenação).
 
 ### Contrato de mensagens
 
