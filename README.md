@@ -41,8 +41,6 @@ Timestamps lógicos (Lamport) são usados para ordenar pedidos; em empate usa‑
   - Estado global: `timestamp`, `reply_count`, `deferred_requests`, `requesting_sc`, `in_cs`.
   - Observações: comparação (timestamp, id) depende de ordering lexicográfica de `PROCESS_ID`. Não há locks em variáveis compartilhadas; race conditions são possíveis. Busy-wait usado para aguardar replies; pode-se melhorar com `threading.Event`/`Condition`.
 
-- `processo.py` (removido) — versão orientada a objetos que existia como material didático. O foco deste repositório agora é a execução via containers usando `server.py` e `docker-compose`.
-
 - [dockerfile](dockerfile) — imagem mínima (Python 3.11-slim) que copia o projeto, instala `flask` e `requests` e executa `server.py` em modo unbuffered.
 - [docker-compose.yml](docker-compose.yml) — orquestra três instâncias (p1, p2, p3). Cada serviço define `PROCESS_ID` e `PEERS`; Docker Compose fornece resolução de nomes (ex.: `http://p2:5000`).
 
@@ -85,11 +83,17 @@ Timestamps lógicos (Lamport) são usados para ordenar pedidos; em empate usa‑
   - Race conditions: `reply_count`, `timestamp`, `deferred_requests` não são protegidos por locks.
   - Comparação por `PROCESS_ID` lexicográfica é frágil fora do formato pN.
   - Busy‑wait para aguardar replies (ineficiente).
-  - `processo.py` e `server.py` usam formatos/endereços diferentes — incompatibilidade.
+  - (Nota: este repositório foca em `server.py` e execução por containers.)
 
 ## 5. Operação com Docker Compose
 
-Para rodar:
+### Para subir o container
 
 ```powershell
-docker-compose up --build
+docker-compose up --d
+```
+
+### Para ver os logs
+
+```powershell
+docker compose logs -f
