@@ -41,9 +41,7 @@ Timestamps lógicos (Lamport) são usados para ordenar pedidos; em empate usa‑
   - Estado global: `timestamp`, `reply_count`, `deferred_requests`, `requesting_sc`, `in_cs`.
   - Observações: comparação (timestamp, id) depende de ordering lexicográfica de `PROCESS_ID`. Não há locks em variáveis compartilhadas; race conditions são possíveis. Busy-wait usado para aguardar replies; pode-se melhorar com `threading.Event`/`Condition`.
 
-- [processo.py](processo.py) — versão orientada a objetos, exemplo local/educacional.
-  - Contém a classe [`Processo`](processo.py) com método [`request`](processo.py), `receive_request`, `receive_reply`, `release`.
-  - Usa chaves JSON e endpoints que diferem de `server.py` (por exemplo, `id` vs `sender`, `/release`), portanto não é um cliente drop‑in para `server.py`. Serve como material didático.
+- `processo.py` (removido) — versão orientada a objetos que existia como material didático. O foco deste repositório agora é a execução via containers usando `server.py` e `docker-compose`.
 
 - [dockerfile](dockerfile) — imagem mínima (Python 3.11-slim) que copia o projeto, instala `flask` e `requests` e executa `server.py` em modo unbuffered.
 - [docker-compose.yml](docker-compose.yml) — orquestra três instâncias (p1, p2, p3). Cada serviço define `PROCESS_ID` e `PEERS`; Docker Compose fornece resolução de nomes (ex.: `http://p2:5000`).
