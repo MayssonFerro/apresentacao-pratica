@@ -63,7 +63,6 @@ def enter_critical_section():
         t = threading.Thread(target=send_request, args=(peer,))
         t.start()
 
-    # aguarda replies
     while reply_count < len(peers):
         time.sleep(0.5)
 
@@ -83,12 +82,11 @@ def enter_critical_section():
     deferred_requests.clear()
 
 def send_request(peer):
-    """Tenta enviar REQUEST para um peer com retries"""
     global timestamp
     url = f"http://{peer}:5000/request"
     payload = {"sender": process_id, "timestamp": timestamp}
 
-    for _ in range(5):  # tenta 5 vezes
+    for _ in range(5):
         try:
             log(f"→ REQUEST({timestamp}) → {url}")
             requests.post(url, json=payload, timeout=2)
